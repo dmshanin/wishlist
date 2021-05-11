@@ -15,6 +15,7 @@ export default function EditEntryPage() {
         <Nav title="View" />
         <Container>
           <h1 className="font-bold text-3xl my-2">{data.title}</h1>
+          <p>{data.description}</p>
           <p>{data.content}</p>
         </Container>
       </>

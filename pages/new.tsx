@@ -1,6 +1,11 @@
 import Nav from '@/components/nav'
 import Container from '@/components/container'
-import EntryForm from '@/components/entry-form'
+import dynamic from "next/dynamic";
+
+const EntryForm = dynamic(
+    () => import('@/components/entry-form'),
+    { ssr: false }
+)
 
 export default function NewEntryPage() {
   return (

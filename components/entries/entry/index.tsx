@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import Link from 'next/link'
 import { mutate } from 'swr'
 
 import ButtonLink from '@/components/button-link'
 import Button from '@/components/button'
 
-function Entry({ id, title, content }) {
+function Entry({ id, title }) {
   const [deleting, setDeleting] = useState(false)
 
   async function deleteEntry() {
@@ -24,7 +24,7 @@ function Entry({ id, title, content }) {
         </Link>
         <div className="flex ml-4">
           <ButtonLink
-            href={`/entry/edit/${id}?title=${title}&content=${content}`}
+            href={`/entry/edit/${id}`}
             className="h-5 py-0 mx-1"
           >
             Edit
@@ -36,9 +36,34 @@ function Entry({ id, title, content }) {
           >
             {deleting ? 'Deleting ...' : 'Delete'}
           </Button>
+          { true ? (
+              <Button
+                  // disabled={deleting}
+                  // onClick={deleteEntry}
+                  className="h-5 py-0 mx-1"
+              >
+                {deleting ? 'Publishing ...' : 'Publish'}
+              </Button>
+          ) : (
+              <Fragment>
+                <Button
+                    // disabled={deleting}
+                    // onClick={deleteEntry}
+                    className="h-5 py-0 mx-1"
+                >
+                  {deleting ? 'Unpublishing ...' : 'Unpublish'}
+                </Button>
+                <Button
+                    // disabled={deleting}
+                    // onClick={deleteEntry}
+                    className="h-5 py-0 mx-1"
+                >
+                  {deleting ? 'Unpublishing ...' : 'Copy Link'}
+                </Button>
+              </Fragment>
+          ) }
         </div>
       </div>
-      <p>{content}</p>
     </div>
   )
 }

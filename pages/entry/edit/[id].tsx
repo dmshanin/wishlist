@@ -1,6 +1,11 @@
-import Container from '@/components/container'
 import Nav from '@/components/nav'
-import EditEntryForm from '@/components/edit-entry-form'
+import Container from '@/components/container'
+import dynamic from "next/dynamic";
+
+const EditEntryForm = dynamic(
+    () => import('@/components/edit-entry-form'),
+    { ssr: false }
+)
 
 export default function EditEntryPage() {
   return (
